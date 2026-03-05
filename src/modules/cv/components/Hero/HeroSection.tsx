@@ -1,3 +1,9 @@
+import SectionLayout from "../../../../shared/components/layout/SectionLayout";
+
 export default function HeroSection() {
-  return <section id="hero">HeroSection</section>;
+  return (
+    <SectionLayout id="hero">
+      HeroSection
+    </SectionLayout>
+  );
 }

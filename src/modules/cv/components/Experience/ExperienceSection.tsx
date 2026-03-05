@@ -1,3 +1,9 @@
+import SectionLayout from "../../../../shared/components/layout/SectionLayout";
+
 export default function ExperienceSection() {
-  return <section id="experience">ExperienceSection</section>;
+  return (
+    <SectionLayout id="experience">
+      ExperienceSection
+    </SectionLayout>
+  );
 }

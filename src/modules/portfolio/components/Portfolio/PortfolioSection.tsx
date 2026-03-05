@@ -1,3 +1,9 @@
+import SectionLayout from "../../../../shared/components/layout/SectionLayout";
+
 export default function PortfolioSection() {
-  return <section id="portfolio">PortfolioSection</section>;
+  return (
+    <SectionLayout id="portfolio">
+      PortfolioSection
+    </SectionLayout>
+  );
 }

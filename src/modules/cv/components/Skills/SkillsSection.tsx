@@ -1,3 +1,9 @@
+import SectionLayout from "../../../../shared/components/layout/SectionLayout";
+
 export default function SkillsSection() {
-  return <section id="skills">SkillsSection</section>;
+  return (
+    <SectionLayout id="skills">
+      SkillsSection
+    </SectionLayout>
+  );
 }

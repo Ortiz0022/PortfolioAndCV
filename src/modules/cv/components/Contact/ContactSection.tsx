@@ -1,3 +1,9 @@
+import SectionLayout from "../../../../shared/components/layout/SectionLayout";
+
 export default function ContactSection() {
-  return <section id="contact">ContactSection</section>;
+  return (
+    <SectionLayout id="contact">
+      ContactSection
+    </SectionLayout>
+  );
 }

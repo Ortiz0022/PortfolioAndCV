@@ -1,3 +1,9 @@
+import SectionLayout from "../../../../shared/components/layout/SectionLayout";
+
 export default function EducationSection() {
-  return <section id="education">EducationSection</section>;
+  return (
+    <SectionLayout id="education">
+      EducationSection
+    </SectionLayout>
+  );
 }
