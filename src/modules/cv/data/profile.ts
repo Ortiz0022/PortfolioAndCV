@@ -17,7 +17,7 @@ export const profile: Profile = {
       id: "email",
       platform: "email",
       label: "Email",
-      href: "mailto:ortiz.barrantes.angelica@gmail.com",
+      href: "ortiz.barrantes.angelica@gmail.com",
     },
     {
       id: "linkedin",
