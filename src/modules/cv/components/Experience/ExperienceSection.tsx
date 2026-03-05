@@ -12,10 +12,26 @@ export default function ExperienceSection() {
         ) : (
           <ul>
             {experience.map((x) => (
-              <li key={x.id}>
-                {x.companyOrOrg} — {x.role} ({x.startDate ?? "?"} -{" "}
-                {x.endDate ?? "?"})
-              </li>
+              <>
+                <li key={x.id}>
+                  {x.companyOrOrg} — {x.role} ({x.startDate ?? "?"} -{" "}
+                  {x.endDate ?? "?"})
+                </li>
+                {x.responsibilities && (
+                  <ul>
+                    {x.responsibilities.map((resp, idx) => (
+                      <li key={idx}>{resp}</li>
+                    ))}
+                  </ul>
+                )}
+                {x.technologies && (
+                  <ul>
+                    {x.technologies.map((tech, idx) => (
+                      <li key={idx}>{tech}</li>
+                    ))}
+                  </ul>
+                )}
+              </>
             ))}
           </ul>
         )}

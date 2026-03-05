@@ -15,6 +15,13 @@ export default function EducationSection() {
               <li key={e.id}>
                 {e.institution} — {e.program} ({e.startDate ?? "?"} -{" "}
                 {e.endDate ?? "?"})
+                {e.notes && (
+                  <ul>
+                    {e.notes.map((note, idx) => (
+                      <li key={idx}>{note}</li>
+                    ))}
+                  </ul>
+                )}
               </li>
             ))}
           </ul>
