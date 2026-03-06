@@ -1,17 +1,17 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
-
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap");
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
+    --font-display: "Fraunces", Georgia, serif;
+    --font-body: "DM Sans", system-ui, sans-serif;
+
     --radius-sm: calc(var(--radius) - 4px);
     --radius-md: calc(var(--radius) - 2px);
     --radius-lg: var(--radius);
     --radius-xl: calc(var(--radius) + 4px);
-    --radius-2xl: calc(var(--radius) + 8px);
-    --radius-3xl: calc(var(--radius) + 12px);
-    --radius-4xl: calc(var(--radius) + 16px);
     --color-background: var(--background);
     --color-foreground: var(--foreground);
     --color-card: var(--card);
@@ -45,80 +45,127 @@
     --color-sidebar-ring: var(--sidebar-ring);
 }
 
+/* ── Modo claro: crema cálida + dorado ── */
 :root {
-    --radius: 0.625rem;
-    --background: oklch(1 0 0);
-    --foreground: oklch(0.145 0 0);
-    --card: oklch(1 0 0);
-    --card-foreground: oklch(0.145 0 0);
-    --popover: oklch(1 0 0);
-    --popover-foreground: oklch(0.145 0 0);
-    --primary: oklch(0.205 0 0);
-    --primary-foreground: oklch(0.985 0 0);
-    --secondary: oklch(0.97 0 0);
-    --secondary-foreground: oklch(0.205 0 0);
-    --muted: oklch(0.97 0 0);
-    --muted-foreground: oklch(0.556 0 0);
-    --accent: oklch(0.97 0 0);
-    --accent-foreground: oklch(0.205 0 0);
-    --destructive: oklch(0.577 0.245 27.325);
-    --border: oklch(0.922 0 0);
-    --input: oklch(0.922 0 0);
-    --ring: oklch(0.708 0 0);
+    --radius: 0.75rem;
+    --background: #FBF8F1;
+    --foreground: #1A1614;
+    --card: #FFFFFF;
+    --card-foreground: #1A1614;
+    --popover: #FFFFFF;
+    --popover-foreground: #1A1614;
+    --primary: #C8902E;
+    --primary-foreground: #FFFDF7;
+    --secondary: #F0EAD6;
+    --secondary-foreground: #3D2E1C;
+    --muted: #F5F0E3;
+    --muted-foreground: #7A6B5A;
+    --accent: #E8C368;
+    --accent-foreground: #2A1F0E;
+    --destructive: #C53030;
+    --border: #E6DFD0;
+    --input: #E6DFD0;
+    --ring: #C8902E;
     --chart-1: oklch(0.646 0.222 41.116);
     --chart-2: oklch(0.6 0.118 184.704);
     --chart-3: oklch(0.398 0.07 227.392);
     --chart-4: oklch(0.828 0.189 84.429);
     --chart-5: oklch(0.769 0.188 70.08);
-    --sidebar: oklch(0.985 0 0);
-    --sidebar-foreground: oklch(0.145 0 0);
-    --sidebar-primary: oklch(0.205 0 0);
-    --sidebar-primary-foreground: oklch(0.985 0 0);
-    --sidebar-accent: oklch(0.97 0 0);
-    --sidebar-accent-foreground: oklch(0.205 0 0);
-    --sidebar-border: oklch(0.922 0 0);
-    --sidebar-ring: oklch(0.708 0 0);
+    --sidebar: #F5F0E3;
+    --sidebar-foreground: #1A1614;
+    --sidebar-primary: #C8902E;
+    --sidebar-primary-foreground: #FFFDF7;
+    --sidebar-accent: #F0EAD6;
+    --sidebar-accent-foreground: #1A1614;
+    --sidebar-border: #E6DFD0;
+    --sidebar-ring: #C8902E;
+    --gold: #C8902E;
+    --gold-soft: #E8C368;
+    --glow: rgba(200, 144, 46, 0.15);
 }
 
+/* ── Modo oscuro: navy celestial + dorado estrella ── */
 .dark {
-    --background: oklch(0.145 0 0);
-    --foreground: oklch(0.985 0 0);
-    --card: oklch(0.205 0 0);
-    --card-foreground: oklch(0.985 0 0);
-    --popover: oklch(0.205 0 0);
-    --popover-foreground: oklch(0.985 0 0);
-    --primary: oklch(0.922 0 0);
-    --primary-foreground: oklch(0.205 0 0);
-    --secondary: oklch(0.269 0 0);
-    --secondary-foreground: oklch(0.985 0 0);
-    --muted: oklch(0.269 0 0);
-    --muted-foreground: oklch(0.708 0 0);
-    --accent: oklch(0.269 0 0);
-    --accent-foreground: oklch(0.985 0 0);
-    --destructive: oklch(0.704 0.191 22.216);
-    --border: oklch(1 0 0 / 10%);
-    --input: oklch(1 0 0 / 15%);
-    --ring: oklch(0.556 0 0);
+    --background: #0B0E17;
+    --foreground: #E8E4DD;
+    --card: #111827;
+    --card-foreground: #E8E4DD;
+    --popover: #111827;
+    --popover-foreground: #E8E4DD;
+    --primary: #E8C368;
+    --primary-foreground: #0B0E17;
+    --secondary: #1A1F35;
+    --secondary-foreground: #D4CFC5;
+    --muted: #161B2E;
+    --muted-foreground: #8A8598;
+    --accent: #C8902E;
+    --accent-foreground: #FFFDF7;
+    --destructive: #E53E3E;
+    --border: #232942;
+    --input: #232942;
+    --ring: #E8C368;
     --chart-1: oklch(0.488 0.243 264.376);
     --chart-2: oklch(0.696 0.17 162.48);
     --chart-3: oklch(0.769 0.188 70.08);
     --chart-4: oklch(0.627 0.265 303.9);
     --chart-5: oklch(0.645 0.246 16.439);
-    --sidebar: oklch(0.205 0 0);
-    --sidebar-foreground: oklch(0.985 0 0);
-    --sidebar-primary: oklch(0.488 0.243 264.376);
-    --sidebar-primary-foreground: oklch(0.985 0 0);
-    --sidebar-accent: oklch(0.269 0 0);
-    --sidebar-accent-foreground: oklch(0.985 0 0);
-    --sidebar-border: oklch(1 0 0 / 10%);
-    --sidebar-ring: oklch(0.556 0 0);
+    --sidebar: #111827;
+    --sidebar-foreground: #E8E4DD;
+    --sidebar-primary: #E8C368;
+    --sidebar-primary-foreground: #0B0E17;
+    --sidebar-accent: #1A1F35;
+    --sidebar-accent-foreground: #E8E4DD;
+    --sidebar-border: #232942;
+    --sidebar-ring: #E8C368;
+    --gold: #E8C368;
+    --gold-soft: #C8902E;
+    --glow: rgba(232, 195, 104, 0.12);
 }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
-    }
+  }
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     @apply bg-background text-foreground;
-    }
+    font-family: var(--font-body);
+    min-height: 100vh;
+  }
+  h1, h2, h3 {
+    font-family: var(--font-display);
+  }
+}
+
+/* Animaciones personalizadas */
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50%       { opacity: 1;   transform: scale(1.3); }
+}
+
+@keyframes planet-breathe {
+  0%, 100% {
+    filter: brightness(1) saturate(1);
+    box-shadow: inherit;
+  }
+  50% {
+    filter: brightness(1.25) saturate(1.15);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.7s ease-out both;
+}
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.25s; }
+.stagger-3 { animation-delay: 0.4s; }
+.stagger-4 { animation-delay: 0.6s; }
+.animate-twinkle {
+  animation: twinkle var(--duration, 3s) var(--delay, 0s) ease-in-out infinite;
 }

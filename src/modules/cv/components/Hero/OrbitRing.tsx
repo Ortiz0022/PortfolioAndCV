@@ -1,34 +1,25 @@
-import type { ReactNode } from "react";
+// OrbitRing.tsx
+import type { ReactNode, CSSProperties } from "react";
 import { cn } from "@/lib/utils";
 
 interface OrbitRingProps {
-  sizeClassName: string;
+  sizeClassName?: string;
   durationClassName: string;
   children: ReactNode;
   className?: string;
+  style?: CSSProperties;
 }
 
-/**
- * Órbita circular reutilizable.
- * La rotación se aplica al contenedor completo y cada nodo se
- * contrarota para mantenerse legible.
- */
-export default function OrbitRing({
-  sizeClassName,
-  durationClassName,
-  children,
-  className,
-}: OrbitRingProps) {
+export default function OrbitRing({ sizeClassName, durationClassName, children, className, style }: OrbitRingProps) {
   return (
     <div
       className={cn(
-        "absolute rounded-full border border-sky-300/30 dark:border-sky-400/20",
-        "animate-spin",
+        "absolute rounded-full border border-slate-300/20 dark:border-slate-500/15 animate-spin",
         sizeClassName,
         durationClassName,
         className
       )}
-      style={{ animationTimingFunction: "linear", animationIterationCount: "infinite" }}
+      style={{ animationTimingFunction: "linear", animationIterationCount: "infinite", ...style }}
     >
       {children}
     </div>

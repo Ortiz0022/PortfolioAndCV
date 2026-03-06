@@ -6,10 +6,12 @@ import LanguagesSection from "./components/Languages/LanguagesSection";
 import ContactSection from "./components/Contact/ContactSection";
 
 import PortfolioSection from "../portfolio/components/Portfolio/PortfolioSection";
+import ThemeToggle from "@/shared/components/ThemeToggle";
 
 export default function CvPage() {
   return (
     <>
+      <ThemeToggle />
       <HeroSection />
       <EducationSection />
       <ExperienceSection />
