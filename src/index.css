@@ -82,6 +82,10 @@
     --gold: #C8902E;
     --gold-soft: #E8C368;
     --glow: rgba(200, 144, 46, 0.15);
+    --gold: #C8902E;
+    --gold-soft: #E8C368;
+    --glow: rgba(200, 144, 46, 0.15);
+    --contact-star: rgba(122, 107, 90, 0.22);
 }
 
 /* ── Modo oscuro: navy celestial + dorado estrella ── */
@@ -120,6 +124,10 @@
     --gold: #E8C368;
     --gold-soft: #C8902E;
     --glow: rgba(232, 195, 104, 0.12);
+    --gold: #E8C368;
+    --gold-soft: #C8902E;
+    --glow: rgba(232, 195, 104, 0.12);
+    --contact-star: rgba(255, 255, 255, 0.18);
 }
 
 @layer base {
