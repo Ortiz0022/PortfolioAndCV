@@ -2,33 +2,48 @@ import type { Project } from "../../../shared/types/project";
 
 export const projects: Project[] = [
   {
-    id: "p-universidad",
-    title: "College Management System",
+    id: "p-university",
+    title: "University Management System",
     shortDescription:
       "Sistema web para gestionar información y procesos administrativos municipales.",
     technologies: ["React", "TypeScript", ".NET", "SQL Server"],
-    links: [
-      { label: "GitHub", href: "PON_AQUI_EL_LINK" },
+    media: [
+      {
+        kind: "image",
+        src: "src/assets/images/university.png",
+        alt: "Vista previa del sistema de gestión universitaria",
+      },
     ],
+    links: [{ label: "GitHub", href: "https://github.com/Ortiz0022/Universidad-IAFuturo-Front" }],
   },
   {
     id: "p-ganaderos",
     title: "Cámara de Ganaderos",
     shortDescription:
-      "Aplicación para registro/gestión de información relacionada a asociados y fincas (proyecto en desarrollo).",
+      "Aplicación para registro y gestión de información de asociados y fincas.",
     technologies: ["React", "TypeScript", "NestJS", "MySQL"],
-    links: [
-      { label: "GitHub", href: "PON_AQUI_EL_LINK" },
+    media: [
+      {
+        kind: "image",
+        src: "src/assets/images/ganaderos.png",
+        alt: "Vista previa del sistema de Cámara de Ganaderos",
+      },
     ],
+    links: [{ label: "GitHub", href: "https://github.com/Ortiz0022/Informative_App_Front" }],
   },
   {
-    id: "p-bomberos",
-    title: "Bomberos de Nosara (App de Emergencias)",
+    id: "p-game",
+    title: "Juego de Stroop",
     shortDescription:
-      "Aplicación móvil para reportes de emergencias con estados y actualización periódica.",
-    technologies: ["React Native", "Expo"],
-    links: [
-      { label: "GitHub", href: "PON_AQUI_EL_LINK" },
+      "Aplicación interactiva para entrenamiento cognitivo basado en el test de Stroop.",
+    technologies: ["React", "TypeScript", "SignalR", "ASP.NET Core"],
+    media: [
+      {
+        kind: "image",
+        src: "src/assets/images/stroop-game.png",
+        alt: "Vista previa del juego de Stroop",
+      },
     ],
+    links: [{ label: "GitHub", href: "https://github.com/Ortiz0022/FrontStroopGame" }],
   },
 ];

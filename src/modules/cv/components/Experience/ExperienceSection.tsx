@@ -12,8 +12,8 @@ export default function ExperienceSection() {
         ) : (
           <ul>
             {experience.map((x) => (
-              <>
-                <li key={x.id}>
+              <div key={x.id}>
+                <li>
                   {x.companyOrOrg} — {x.role} ({x.startDate ?? "?"} -{" "}
                   {x.endDate ?? "?"})
                 </li>
@@ -31,7 +31,7 @@ export default function ExperienceSection() {
                     ))}
                   </ul>
                 )}
-              </>
+              </div>
             ))}
           </ul>
         )}

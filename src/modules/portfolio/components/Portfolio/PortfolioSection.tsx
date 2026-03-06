@@ -20,27 +20,38 @@ export default function PortfolioSection() {
 
   const handleOpenChange = (next: boolean) => {
     setOpen(next);
-    if (!next) {
-      setSelected(null);
-    }
+    if (!next) setSelected(null);
   };
 
   return (
     <SectionLayout id={SECTION_IDS.portfolio}>
-      <div>
-        <h2>Portafolio</h2>
+      <div className="space-y-8">
+        <div>
+          <h2 className="text-3xl font-bold">Portafolio</h2>
+          <p className="mt-2 text-muted-foreground">
+            Algunos proyectos que he desarrollado.
+          </p>
+        </div>
 
         {items.length === 0 ? (
           <p>(Sin proyectos todavía)</p>
         ) : (
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {items.map((p) => (
-              <ProjectCard key={p.id} project={p} onOpenDetails={handleOpenDetails} />
+          <div className="grid gap-8 md:grid-cols-2">
+            {items.map((project) => (
+              <ProjectCard
+                key={project.id}
+                project={project}
+                onOpenDetails={handleOpenDetails}
+              />
             ))}
           </div>
         )}
 
-        <ProjectDetailsDialog open={open} onOpenChange={handleOpenChange} project={selected} />
+        <ProjectDetailsDialog
+          open={open}
+          onOpenChange={handleOpenChange}
+          project={selected}
+        />
       </div>
     </SectionLayout>
   );

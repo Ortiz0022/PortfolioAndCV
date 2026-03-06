@@ -1,14 +1,24 @@
+import type { ReactNode } from "react";
+import type { SectionId } from "@/shared/lib/sectionIds";
+import { cn } from "@/lib/utils";
+
 interface SectionLayoutProps {
-  id?: string;
-  children: React.ReactNode;
+  id?: SectionId;
+  children: ReactNode;
+  className?: string;
 }
 
-export default function SectionLayout({ id, children }: SectionLayoutProps) {
+export default function SectionLayout({
+  id,
+  children,
+  className,
+}: SectionLayoutProps) {
   return (
-    <section id={id} className="min-h-screen flex items-center px-6 py-16 border border-gray">
-      <div className="max-w-6xl mx-auto w-full">
-        {children}
-      </div>
+    <section
+      id={id}
+      className={cn("min-h-screen px-6 py-16", className)}
+    >
+      <div className="mx-auto w-full max-w-7xl">{children}</div>
     </section>
   );
 }
