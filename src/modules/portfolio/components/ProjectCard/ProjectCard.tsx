@@ -1,27 +1,6 @@
 import type { Project, ProjectMedia } from "@/shared/types/project";
 import { ExternalLink } from "lucide-react";
-
-function StarDeco({
-  size = 10,
-  className = "",
-  color,
-}: {
-  size?: number;
-  className?: string;
-  color?: string;
-}) {
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 16 16"
-      fill={color ?? "currentColor"}
-      className={className}
-    >
-      <path d="M8 0 L8.8 7.2 L16 8 L8.8 8.8 L8 16 L7.2 8.8 L0 8 L7.2 7.2 Z" />
-    </svg>
-  );
-}
+import { StarDeco } from "./StarDeco";
 
 /**
  * Acentos sutiles por tarjeta.
@@ -108,22 +87,11 @@ export default function ProjectCard({
     >
       {/* Preview principal */}
       <div className="absolute inset-0">
-        {previewMedia?.kind === "video" ? (
-          <video
-            src={previewMedia.src}
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-[1.04]"
-          />
-        ) : (
           <img
             src={previewMedia?.src}
-            alt={previewMedia?.alt ?? project.title}
+            alt={previewMedia?.kind ?? project.title}
             className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-[1.04]"
           />
-        )}
 
         {/* Overlay que cubre TODO el card */}
         <div className="absolute inset-0 bg-white/18 backdrop-blur-[2px] dark:bg-black/34 dark:backdrop-blur-[3px]" />
@@ -154,7 +122,7 @@ export default function ProjectCard({
       <div className="absolute inset-x-0 bottom-0 z-10 p-6">
         <div className="flex min-h-[170px] flex-col justify-end">
           {/* Título */}
-          <h3 className="max-w-[85%] text-[1.1rem] font-semibold leading-tight text-[#161616] dark:text-white md:text-[1.25rem]">
+          <h3 className="max-w-[85%] text-[1.1rem] text-[#201e1b] font-semibold leading-tight dark:text-[#fcf0e1] md:text-[1.25rem]">
             {project.title}
           </h3>
 
@@ -173,7 +141,7 @@ export default function ProjectCard({
                 key={tech}
                 className="rounded-full border px-2.5 py-1 text-[10px] font-medium tracking-wide text-[#1F1F1F] dark:text-white/90"
                 style={{
-                  background: "rgba(255,255,255,0.58)",
+                  background: "#fff1f194",
                   borderColor: "rgba(0,0,0,0.10)",
                   boxShadow: "0 1px 6px rgba(0,0,0,0.04)",
                   backdropFilter: "blur(6px)",

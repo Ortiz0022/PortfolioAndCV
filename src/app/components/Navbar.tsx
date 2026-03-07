@@ -60,7 +60,7 @@ export default function Navbar() {
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-3 md:px-6">
         <div className="flex items-center gap-2">
           <Sparkles className="h-4 w-4 text-primary" />
-          <span className="font-semibold text-foreground">Mi Portafolio</span>
+          <span  className="font-semibold text-foreground"><a href="Inicio" className="hover:text-accent">A.O</a></span>
         </div>
 
         <NavigationMenu className="hidden md:flex">
