@@ -15,7 +15,7 @@ function StarDeco({ size = 10, className = "", style }: { size?: number; classNa
 const LEVEL_CONFIG: Record<string, { label: string; sublabel: string; percent: number; stars: number }> = {
   native:       { label: "Nativo",      sublabel: "Lengua materna",          percent: 100, stars: 5 },
   advanced:     { label: "Avanzado",    sublabel: "Dominio alto",            percent: 80,  stars: 4 },
-  intermediate: { label: "Intermedio",  sublabel: "Comunicación fluida",     percent: 55,  stars: 3 },
+  intermediate: { label: "Intermedio",  sublabel: "Comunicación fluida",     percent: 80,  stars: 3 },
   basic:        { label: "Básico",      sublabel: "Conocimientos iniciales", percent: 25,  stars: 1 },
 };
 
@@ -48,7 +48,7 @@ const FALLBACK_LANG = { accent: "#9333ea", glow: "rgba(147,51,234,0.45)", barFro
 export default function LanguagesSection() {
   return (
     <SectionLayout id="languages">
-      <div className="mx-auto w-full max-w-6xl px-6 py-20 md:px-12 md:py-24 lg:px-16">
+      <div className="mx-auto w-full max-w-6xl px-6 py-12 md:px-12 md:py-10 lg:px-10">
 
         {/* ── Encabezado ── */}
         <div className="mb-16 flex flex-col items-center gap-4 text-center">
@@ -76,7 +76,7 @@ export default function LanguagesSection() {
           </div>
 
           <p className="text-xs font-mono uppercase tracking-[0.35em] text-[#7A6B5A] dark:text-[#8A8598]">
-            Comunicación global
+            Competencia lingüística
           </p>
         </div>
 

@@ -33,7 +33,7 @@ export default function PortfolioSection() {
 
   return (
     <SectionLayout id={SECTION_IDS.portfolio}>
-      <div className="mx-auto w-full max-w-6xl px-6 py-20 md:px-12 md:py-24 lg:px-16">
+      <div className="mx-auto w-full max-w-6xl px-6 py-12 md:px-12 md:py-10 lg:px-10">
 
         {/* ── Encabezado ── */}
         <div className="mb-14 flex flex-col items-center gap-4 text-center">

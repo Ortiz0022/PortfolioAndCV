@@ -6,4 +6,5 @@ export interface Profile {
   location?: string;
   summary?: string;
   socials: SocialLink[];
+  professional: string[];
 }

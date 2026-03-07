@@ -4,16 +4,15 @@ export const profile: Profile = {
   fullName: "Angélica María Ortiz Barrantes",
 
   headlines: [
-    "Estudiante de Ingeniería en Sistemas",
-    "Desarrolladora Full Stack",
-    "En busca de práctica profesional",
+    "Estudiante de Ingeniería en Sistemas de Información (UNA)",
+    "Desarrolladora Full Stack en formación",
+    "En búsqueda de práctica profesional",
   ],
 
   location: "Costa Rica",
 
   summary:
-    "Me enfoco en construir aplicaciones web con buenas prácticas, UI clara y una base sólida en backend. Me gusta trabajar en proyectos reales y aprender constantemente.",
-
+  " Me apasiona aprender nuevas tecnologías y mejorar mis habilidades para crear soluciones eficientes y escalables. Busco oportunidades para aplicar mis conocimientos en un entorno profesional y seguir creciendo como desarrolladora. Estoy comprometida con el aprendizaje continuo y la colaboración efectiva en equipo, y estoy emocionada por contribuir a proyectos innovadores que tengan un impacto positivo.",
   socials: [
     {
       id: "github",
@@ -33,5 +32,12 @@ export const profile: Profile = {
       label: "LinkedIn",
       href: "https://www.linkedin.com/in/angelica-ortiz-barrantes/",
     },
+  ],
+  professional: [
+    "Trabajo colaborativo (Scrum)",
+    "Comunicación clara.",
+    "Resolución de problemas.",
+    "Adaptabilidad",
+    "Aprendizaje continuo orientado a la práctica",
   ],
 };

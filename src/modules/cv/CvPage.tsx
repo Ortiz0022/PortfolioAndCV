@@ -14,9 +14,9 @@ export default function CvPage() {
       <ThemeToggle />
       <HeroSection />
       <EducationSection />
-      <ExperienceSection />
       <SkillsSection />
       <LanguagesSection />
+      <ExperienceSection />
       <PortfolioSection />
       <ContactSection />
     </>

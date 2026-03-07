@@ -47,7 +47,7 @@ export const projects: Project[] = [
     links: [{ label: "GitHub", href: "https://github.com/Ortiz0022/FrontStroopGame" }],
   },
   {
-    id: "p-game",
+    id: "p-game1",
     title: "Juego de Stroop",
     shortDescription:
       "Aplicación interactiva para entrenamiento cognitivo basado en el test de Stroop.",

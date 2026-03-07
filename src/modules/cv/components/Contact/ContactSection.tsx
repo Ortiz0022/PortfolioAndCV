@@ -198,7 +198,7 @@ export default function ContactSection() {
 
   return (
     <SectionLayout id="contact">
-      <div className="mx-auto w-full max-w-6xl px-6 py-20 md:px-12 md:py-24 lg:px-16">
+      <div className="mx-auto w-full max-w-6xl px-6 py-12 md:px-12 md:py-10 lg:px-10">
         {/* ── Estrellas de fondo ── */}
         <div className="pointer-events-none absolute inset-0">
           {Array.from({ length: 60 }).map((_, i) => (
@@ -259,30 +259,7 @@ export default function ContactSection() {
         <div className="relative z-10 mx-auto w-full max-w-6xl px-6 md:px-16 lg:px-24">
           {/* ── Encabezado ── */}
           <div className="mb-16 flex flex-col items-center gap-4 text-center">
-            <div className="flex items-center gap-2">
-              <Star6
-                size={7}
-                color="var(--accent)"
-                className="opacity-60 animate-pulse [animation-delay:0.2s]"
-              />
-              <StarDeco size={11} color="var(--accent)" className="animate-pulse" />
-              <Star6
-                size={5}
-                color="var(--accent)"
-                className="opacity-50 animate-pulse [animation-delay:0.6s]"
-              />
-              <StarDeco
-                size={7}
-                color="var(--primary)"
-                className="animate-pulse [animation-delay:1s]"
-              />
-              <Star6
-                size={6}
-                color="var(--accent)"
-                className="opacity-60 animate-pulse [animation-delay:0.4s]"
-              />
-            </div>
-
+          
             <h2
               className="text-[clamp(2.4rem,5vw,3.8rem)] font-black leading-tight text-foreground"
               style={{ fontFamily: "var(--font-display)" }}
