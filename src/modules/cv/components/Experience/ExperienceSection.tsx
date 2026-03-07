@@ -1,5 +1,5 @@
 import SectionLayout from "../../../../shared/components/layout/SectionLayout";
-import { Badge } from "@/components/ui/badge";
+import { Badge } from "@/components/ui/badge.tsx";
 import {
   Briefcase,
   CalendarDays,

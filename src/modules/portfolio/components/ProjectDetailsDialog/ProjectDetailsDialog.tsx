@@ -4,7 +4,7 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog";
+} from "@/components/ui/dialog.tsx";
 import type { Project } from "@/shared/types/project";
 import { ExternalLink, Github } from "lucide-react";
 

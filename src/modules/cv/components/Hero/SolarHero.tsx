@@ -332,7 +332,7 @@ export default function SolarHero() {
 
       {/* Planetas reales por encima del contenido */}
       <div
-        className="absolute inset-0 z-30"
+        className="absolute inset-0 z-10"
         style={{
           transform: `translate(${mouse.x * 0.1}px, ${mouse.y * 0.1}px)`,
           transition: "transform 0.35s ease-out",

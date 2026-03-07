@@ -6,7 +6,7 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@/components/ui/sheet";
+} from "@/components/ui/sheet.tsx";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import {
   NavigationMenu,
@@ -14,7 +14,7 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu";
+} from "@/components/ui/navigation-menu.tsx";
 import { SECTION_IDS } from "../../shared/lib/sectionIds";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button.tsx";
