@@ -1,4 +1,4 @@
-import SiteBackground from "../shared/components/SiteBackground";
+import SiteBackground from "../shared/components/SiteBackground.tsx";
 import CvPage from "../modules/cv/CvPage";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
