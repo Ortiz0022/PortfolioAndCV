@@ -1,20 +1,64 @@
-// ProjectCard.tsx
 import type { Project, ProjectMedia } from "@/shared/types/project";
 import { ExternalLink } from "lucide-react";
 
-function StarDeco({ size = 10, className = "", color }: { size?: number; className?: string; color?: string }) {
+function StarDeco({
+  size = 10,
+  className = "",
+  color,
+}: {
+  size?: number;
+  className?: string;
+  color?: string;
+}) {
   return (
-    <svg width={size} height={size} viewBox="0 0 16 16" fill={color ?? "currentColor"} className={className}>
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 16 16"
+      fill={color ?? "currentColor"}
+      className={className}
+    >
       <path d="M8 0 L8.8 7.2 L16 8 L8.8 8.8 L8 16 L7.2 8.8 L0 8 L7.2 7.2 Z" />
     </svg>
   );
 }
 
-// Acento dorado por índice — sutil variación tonal
+/**
+ * Acentos sutiles por tarjeta.
+ *
+ * Se usan para:
+ * - borde
+ * - glow
+ * - numeración
+ * - botón "Ver más"
+ *
+ * Se mantienen fríos y modernos para evitar el look recargado.
+ */
 const CARD_ACCENTS = [
-  { border: "rgba(200,144,46,0.3)",  glow: "rgba(200,144,46,0.25)", num: "#C8902E" },
-  { border: "rgba(99,102,241,0.28)", glow: "rgba(99,102,241,0.2)",  num: "#818cf8" },
-  { border: "rgba(20,184,166,0.28)", glow: "rgba(20,184,166,0.2)",  num: "#2dd4bf" },
+  {
+    border: "rgba(125, 138, 255, 0.26)",
+    glow: "rgba(125, 138, 255, 0.16)",
+    num: "#8b95ff",
+    buttonBg: "rgba(125, 138, 255, 0.18)",
+    buttonBorder: "rgba(125, 138, 255, 0.34)",
+    buttonText: "#5b63e6",
+  },
+  {
+    border: "rgba(79, 209, 197, 0.24)",
+    glow: "rgba(79, 209, 197, 0.14)",
+    num: "#58d8cb",
+    buttonBg: "rgba(79, 209, 197, 0.18)",
+    buttonBorder: "rgba(79, 209, 197, 0.34)",
+    buttonText: "#0f8f84",
+  },
+  {
+    border: "rgba(167, 139, 250, 0.24)",
+    glow: "rgba(167, 139, 250, 0.14)",
+    num: "#b39cff",
+    buttonBg: "rgba(167, 139, 250, 0.18)",
+    buttonBorder: "rgba(167, 139, 250, 0.34)",
+    buttonText: "#6f5ae6",
+  },
 ];
 
 function getPreviewMedia(media?: ProjectMedia[]) {
@@ -27,119 +71,153 @@ interface ProjectCardProps {
   index?: number;
 }
 
-export default function ProjectCard({ project, onOpenDetails, index = 0 }: ProjectCardProps) {
+/**
+ * Card moderna de proyecto.
+ *
+ * Comportamiento:
+ * - Estado base: título, tecnologías y CTA visibles.
+ * - Hover: aparece la descripción.
+ * - El overlay cubre toda la tarjeta para que no parezca una caja dentro de otra.
+ */
+export default function ProjectCard({
+  project,
+  onOpenDetails,
+  index = 0,
+}: ProjectCardProps) {
   const previewMedia = getPreviewMedia(project.media);
   const accent = CARD_ACCENTS[index % CARD_ACCENTS.length];
 
   return (
-    <div
-      className="group relative flex h-[400px] cursor-pointer flex-col overflow-hidden rounded-2xl border transition-all duration-500 hover:-translate-y-1"
+    <article
+      className="group relative flex h-[430px] cursor-pointer flex-col overflow-hidden rounded-[1.75rem] border bg-card/20 transition-all duration-500 hover:-translate-y-1"
       style={{
         borderColor: accent.border,
-        boxShadow: `0 4px 20px ${accent.glow}`,
+        boxShadow: `0 10px 32px ${accent.glow}`,
       }}
       onClick={() => onOpenDetails(project)}
       onMouseEnter={(e) => {
-        (e.currentTarget as HTMLElement).style.boxShadow = `0 16px 48px ${accent.glow.replace(/[\d.]+\)$/, "0.45)")}`;
-        (e.currentTarget as HTMLElement).style.borderColor = accent.border.replace(/[\d.]+\)$/, "0.6)");
+        (e.currentTarget as HTMLElement).style.boxShadow =
+          `0 20px 50px ${accent.glow.replace(/[\d.]+\)$/, "0.28)")}`;
+        (e.currentTarget as HTMLElement).style.borderColor =
+          accent.border.replace(/[\d.]+\)$/, "0.48)");
       }}
       onMouseLeave={(e) => {
-        (e.currentTarget as HTMLElement).style.boxShadow = `0 4px 20px ${accent.glow}`;
+        (e.currentTarget as HTMLElement).style.boxShadow = `0 10px 32px ${accent.glow}`;
         (e.currentTarget as HTMLElement).style.borderColor = accent.border;
       }}
     >
-      {/* ── Imagen / Video ── */}
+      {/* Preview principal */}
       <div className="absolute inset-0">
         {previewMedia?.kind === "video" ? (
           <video
             src={previewMedia.src}
-            autoPlay loop muted playsInline
-            className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-[1.04]"
           />
         ) : (
           <img
             src={previewMedia?.src}
             alt={previewMedia?.alt ?? project.title}
-            className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+            className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-[1.04]"
           />
         )}
-        {/* Gradiente oscuro sobre imagen */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+
+        {/* Overlay que cubre TODO el card */}
+        <div className="absolute inset-0 bg-white/18 backdrop-blur-[2px] dark:bg-black/34 dark:backdrop-blur-[3px]" />
+
+        {/* Gradiente principal de lectura */}
+        <div className="absolute inset-0 bg-gradient-to-t from-white/55 via-white/10 to-transparent dark:from-black/72 dark:via-black/26 dark:to-transparent" />
+
+        {/* Gradiente más fuerte al fondo para contenido */}
+        <div className="absolute inset-x-0 bottom-0 h-[46%] bg-gradient-to-t from-white/82 via-white/46 to-transparent dark:from-black/86 dark:via-black/50 dark:to-transparent transition-all duration-500 group-hover:from-white/88 group-hover:via-white/54 dark:group-hover:from-black/90 dark:group-hover:via-black/58" />
       </div>
 
-      {/* ── Número índice decorativo ── */}
-      <div className="absolute right-4 top-4 z-10">
+      {/* Número decorativo */}
+      <div className="absolute right-5 top-5 z-10">
         <span
-          className="font-mono text-xs font-bold opacity-80"
+          className="font-mono text-sm font-semibold opacity-90"
           style={{ color: accent.num }}
         >
           {String(index + 1).padStart(2, "0")}
         </span>
       </div>
 
-      {/* ── Estrellita decorativa top-left ── */}
-      <div className="absolute left-4 top-4 z-10 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-        <StarDeco size={10} className="animate-pulse" color={accent.num} />      
-        </div>
+      {/* Estrella decorativa */}
+      <div className="absolute left-5 top-5 z-10 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+        <StarDeco size={9} className="animate-pulse" color={accent.num} />
+      </div>
 
-      {/* ── Contenido inferior ── */}
-      <div className="absolute bottom-0 left-0 right-0 z-10 p-5">
-        {/* Título */}
-        <h3
-          className="mb-2 text-xl font-black leading-tight text-white"
-          style={{ fontFamily: "var(--font-display)" }}
-        >
-          {project.title}
-        </h3>
+      {/* Contenido visible sobre todo el card */}
+      <div className="absolute inset-x-0 bottom-0 z-10 p-6">
+        <div className="flex min-h-[170px] flex-col justify-end">
+          {/* Título */}
+          <h3 className="max-w-[85%] text-[1.1rem] font-semibold leading-tight text-[#161616] dark:text-white md:text-[1.25rem]">
+            {project.title}
+          </h3>
 
-        {/* Descripción — aparece en hover */}
-        <p className="mb-3 line-clamp-2 text-sm leading-relaxed text-white/75 transition-all duration-300 group-hover:text-white/90">
-          {project.shortDescription}
-        </p>
+          {/* Descripción: solo hover */}
+          <div className="overflow-hidden transition-all duration-500 max-h-0 opacity-0 translate-y-2 group-hover:max-h-24 group-hover:opacity-100 group-hover:translate-y-0">
+            <p className="mt-3 max-w-[92%] text-sm leading-relaxed text-[#2F2F2F]/88 dark:text-white/80">
+              {project.shortDescription}
+            </p>
+          </div>
 
-        {/* Tech badges + botón */}
-        <div className="flex items-end justify-between gap-3">
-          <div className="flex flex-wrap gap-1.5">
-            {project.technologies.slice(0, 3).map((tech) => (
-              <span
+          {/* Footer del card */}
+          <div className="mt-4 flex items-end justify-between gap-3">
+            <div className="flex flex-wrap gap-2">
+              {project.technologies.slice(0, 3).map((tech) => (
+                <span
                 key={tech}
-                className="rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-white/90"
+                className="rounded-full border px-2.5 py-1 text-[10px] font-medium tracking-wide text-[#1F1F1F] dark:text-white/90"
                 style={{
-                  background: `${accent.glow.replace(/[\d.]+\)$/, "0.4)")}`,
-                  border: `1px solid ${accent.border.replace(/[\d.]+\)$/, "0.5)")}`,
-                  backdropFilter: "blur(4px)",
+                  background: "rgba(255,255,255,0.58)",
+                  borderColor: "rgba(0,0,0,0.10)",
+                  boxShadow: "0 1px 6px rgba(0,0,0,0.04)",
+                  backdropFilter: "blur(6px)",
                 }}
               >
                 {tech}
               </span>
-            ))}
-            {project.technologies.length > 3 && (
-              <span className="rounded-full px-2 py-0.5 text-[10px] font-semibold text-white/60"
+              ))}
+              {project.technologies.length > 3 && (
+              <span
+                className="rounded-full border px-2.5 py-1 text-[10px] font-medium text-[#2B2B2B] dark:text-white/75"
                 style={{
-                  background: "rgba(255,255,255,0.08)",
-                  border: "1px solid rgba(255,255,255,0.15)",
+                  background: "rgba(255,255,255,0.54)",
+                  borderColor: "rgba(0,0,0,0.10)",
+                  boxShadow: "0 1px 6px rgba(0,0,0,0.04)",
+                  backdropFilter: "blur(6px)",
                 }}
               >
                 +{project.technologies.length - 3}
               </span>
-            )}
-          </div>
+              )}
+            </div>
 
-          {/* Botón ver más */}
-          <button
-            type="button"
-            onClick={(e) => { e.stopPropagation(); onOpenDetails(project); }}
-            className="flex flex-shrink-0 items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold text-white transition-all duration-200 hover:scale-105"
-            style={{
-              background: `linear-gradient(135deg, ${accent.num}cc, ${accent.num})`,
-              boxShadow: `0 0 12px ${accent.glow}`,
-            }}
-          >
-            <ExternalLink className="h-3 w-3" />
-            Ver más
-          </button>
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                onOpenDetails(project);
+              }}
+              className="inline-flex flex-shrink-0 items-center gap-2 rounded-full border px-4 py-2 text-xs font-semibold transition-all duration-200 hover:scale-105"
+              style={{
+                background: accent.buttonBg,
+                borderColor: accent.buttonBorder,
+                color: accent.buttonText,
+                boxShadow: "0 2px 10px rgba(0,0,0,0.05)",
+                backdropFilter: "blur(6px)",
+              }}
+            >
+              <ExternalLink className="h-3.5 w-3.5" />
+              Ver más
+            </button>
+          </div>
         </div>
       </div>
-    </div>
+    </article>
   );
 }

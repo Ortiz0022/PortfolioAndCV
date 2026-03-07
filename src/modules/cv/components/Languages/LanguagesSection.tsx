@@ -48,7 +48,7 @@ const FALLBACK_LANG = { accent: "#9333ea", glow: "rgba(147,51,234,0.45)", barFro
 export default function LanguagesSection() {
   return (
     <SectionLayout id="languages">
-      <div className="w-full px-6 md:px-16 lg:px-24 py-20 md:py-28 max-w-6xl mx-auto">
+      <div className="mx-auto w-full max-w-6xl px-6 py-20 md:px-12 md:py-24 lg:px-16">
 
         {/* ── Encabezado ── */}
         <div className="mb-16 flex flex-col items-center gap-4 text-center">

@@ -198,7 +198,7 @@ export default function ContactSection() {
 
   return (
     <SectionLayout id="contact">
-      <div className="relative w-full overflow-hidden bg-background py-24 md:py-32">
+      <div className="mx-auto w-full max-w-6xl px-6 py-20 md:px-12 md:py-24 lg:px-16">
         {/* ── Estrellas de fondo ── */}
         <div className="pointer-events-none absolute inset-0">
           {Array.from({ length: 60 }).map((_, i) => (

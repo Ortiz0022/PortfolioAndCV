@@ -4,7 +4,7 @@ import SolarHero from "./SolarHero";
 
 export default function HeroSection() {
   return (
-    <SectionLayout id={SECTION_IDS.hero} className="overflow-hidden py-0">
+    <SectionLayout id={SECTION_IDS.hero} >
       <SolarHero />
     </SectionLayout>
   );

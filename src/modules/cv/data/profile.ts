@@ -2,10 +2,18 @@ import type { Profile } from "../../../shared/types/profile";
 
 export const profile: Profile = {
   fullName: "Angélica María Ortiz Barrantes",
-  headline: "Estudiante de Ingeniería en Sistemas | Desarrolladora Full Stack",
+
+  headlines: [
+    "Estudiante de Ingeniería en Sistemas",
+    "Desarrolladora Full Stack",
+    "En busca de práctica profesional",
+  ],
+
   location: "Costa Rica",
+
   summary:
     "Me enfoco en construir aplicaciones web con buenas prácticas, UI clara y una base sólida en backend. Me gusta trabajar en proyectos reales y aprender constantemente.",
+
   socials: [
     {
       id: "github",

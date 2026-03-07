@@ -1,15 +1,19 @@
+import SiteBackground from "@/shared/components/SiteBackground";
 import CvPage from "../modules/cv/CvPage";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 
 export default function AppShell() {
   return (
-    <main>
-      <Navbar />
-      <main>
-      <CvPage />
-      </main>
-      <Footer />
-    </main>
+    <div className="relative min-h-screen overflow-x-hidden">
+      <SiteBackground />
+      <div className="relative z-10">
+        <Navbar />
+        <main>
+        <CvPage />
+        </main>
+        <Footer />
+        </div>
+    </div>
   );
 }

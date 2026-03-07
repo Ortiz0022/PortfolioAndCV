@@ -33,7 +33,7 @@ export default function PortfolioSection() {
 
   return (
     <SectionLayout id={SECTION_IDS.portfolio}>
-      <div className="mx-auto w-full max-w-6xl px-6 py-20 md:px-16 md:py-28 lg:px-24">
+      <div className="mx-auto w-full max-w-6xl px-6 py-20 md:px-12 md:py-24 lg:px-16">
 
         {/* ── Encabezado ── */}
         <div className="mb-14 flex flex-col items-center gap-4 text-center">
@@ -72,7 +72,7 @@ export default function PortfolioSection() {
             <p className="text-sm font-mono text-[#7A6B5A] dark:text-[#8A8598]">Sin proyectos aún</p>
           </div>
         ) : (
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-2">
             {items.map((project, i) => (
               <ProjectCard
                 key={project.id}

@@ -1,9 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap");
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
-@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap");
-@custom-variant dark (&:is(.dark *));
 
+@custom-variant dark (&:is(.dark *));
 @theme inline {
     --font-display: "Fraunces", Georgia, serif;
     --font-body: "DM Sans", system-ui, sans-serif;
@@ -85,7 +85,7 @@
     --gold: #C8902E;
     --gold-soft: #E8C368;
     --glow: rgba(200, 144, 46, 0.15);
-    --contact-star: rgba(122, 107, 90, 0.22);
+    --contact-star: rgba(122, 107, 90, 0.14);
 }
 
 /* ── Modo oscuro: navy celestial + dorado estrella ── */
@@ -164,6 +164,15 @@
   }
   50% {
     filter: brightness(1.25) saturate(1.15);
+  }
+}
+
+@keyframes planet-float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
   }
 }
 

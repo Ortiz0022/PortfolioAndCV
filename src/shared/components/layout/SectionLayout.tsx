@@ -3,11 +3,23 @@ import type { SectionId } from "@/shared/lib/sectionIds";
 import { cn } from "@/lib/utils";
 
 interface SectionLayoutProps {
-  id?: SectionId;
+  id?: SectionId | string;
   children: ReactNode;
   className?: string;
 }
 
+/**
+ * Layout base de sección.
+ *
+ * Responsabilidades:
+ * - definir el anchor/id para navegación
+ * - aplicar scroll offset para navbar fijo
+ * - permitir estilos por sección sin forzar altura o padding global
+ *
+ * Importante:
+ * No se define aquí ni max-width ni padding vertical grande,
+ * para evitar espacios duplicados entre secciones.
+ */
 export default function SectionLayout({
   id,
   children,
@@ -16,9 +28,9 @@ export default function SectionLayout({
   return (
     <section
       id={id}
-      className={cn("min-h-screen px-6 py-16", className)}
+      className={cn("relative scroll-mt-24", className)}
     >
-      <div className="mx-auto w-full max-w-7xl">{children}</div>
+      {children}
     </section>
   );
 }

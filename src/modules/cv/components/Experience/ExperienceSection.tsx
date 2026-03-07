@@ -30,7 +30,7 @@ export default function ExperienceSection() {
 
   return (
     <SectionLayout id="experience">
-      <div className="mx-auto max-w-2xl px-4 py-20 md:py-28">
+      <div className="mx-auto w-full max-w-6xl px-6 py-20 md:px-12 md:py-24 lg:px-16">
 
         {/* ── Encabezado ── */}
         <div className="mb-14 flex flex-col items-center gap-4 text-center">
