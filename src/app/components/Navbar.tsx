@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { Menu, Sparkles } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import {
   Sheet,
   SheetContent,
@@ -18,6 +17,7 @@ import {
 } from "@/components/ui/navigation-menu";
 import { SECTION_IDS } from "../../shared/lib/sectionIds";
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button.tsx";
 
 const navItems = [
   { label: "Inicio", href: `#${SECTION_IDS.hero}` },

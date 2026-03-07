@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Github, Linkedin, Mail } from "lucide-react";
+import avatarImg from "@/assets/images/avatar-chibi.png";
 import { profile } from "@/modules/cv/data/profile";
 import { useTheme } from "@/shared/providers/ThemeProvider";
 import HeroTypewriter from "./HeroTypewriter";
@@ -46,7 +47,7 @@ const HERO_PLANETS: HeroPlanet[] = [
     pos: { x: -24, y: -26 },
     palette: {
       gradientDark:
-      "radial-gradient(circle at 35% 35%, #c7f5ff, #31c7e8 72%, #0891b2)",
+        "radial-gradient(circle at 35% 35%, #c7f5ff, #31c7e8 72%, #0891b2)",
       gradientLight:
         "radial-gradient(circle at 35% 35%, #eefcff, #9be7f5 72%, #67e8f9)",
       glowDark: "rgba(244,114,182,0.24)",
@@ -60,7 +61,7 @@ const HERO_PLANETS: HeroPlanet[] = [
   {
     label: "PORTAFOLIO",
     href: "#portfolio",
-    pos: { x: 24, y: -18 },
+    pos: { x: 20, y: -20 },
     palette: {
       gradientDark:
         "radial-gradient(circle at 35% 35%, #ffd4de, #f15b7a 72%, #e11d48)",
@@ -77,7 +78,7 @@ const HERO_PLANETS: HeroPlanet[] = [
   {
     label: "CONTACTO",
     href: "#contact",
-    pos: { x: 39, y: -8 },
+    pos: { x: 34, y: -2 },
     palette: {
       gradientDark:
         "radial-gradient(circle at 35% 35%, #f1d6ff, #bb6ef0 72%, #9333ea)",
@@ -111,7 +112,7 @@ const HERO_PLANETS: HeroPlanet[] = [
   {
     label: "IDIOMAS",
     href: "#languages",
-    pos: { x: 13, y: 40 },
+    pos: { x: 18, y: 44 },
     palette: {
       gradientDark:
         "radial-gradient(circle at 35% 35%, #caffda, #4bdd7b 72%, #16a34a)",
@@ -127,14 +128,6 @@ const HERO_PLANETS: HeroPlanet[] = [
   },
 ];
 
-/**
- * Planeta interactivo del hero.
- *
- * Se mantiene por encima del contenido tipográfico para asegurar:
- * - visibilidad
- * - clic confiable
- * - mejor jerarquía visual
- */
 function HeroPlanetButton({
   label,
   href,
@@ -176,17 +169,6 @@ function HeroPlanetButton({
   );
 }
 
-/**
- * Hero principal del portafolio.
- *
- * Estructura visual:
- * - capa 1: decoración de fondo y órbitas
- * - capa 2: contenido central
- * - capa 3: planetas interactivos por encima del texto
- *
- * Esta separación evita que los accesos clickeables queden ocultos
- * debajo de la tipografía principal.
- */
 export default function SolarHero() {
   const { theme } = useTheme();
   const isDark = theme === "dark";
@@ -221,6 +203,35 @@ export default function SolarHero() {
         <div className="absolute h-[60rem] w-[60rem] rounded-full border border-primary/6 dark:border-primary/[0.04]" />
       </div>
 
+      {/* Astronauta decorativa */}
+      <div
+        className="pointer-events-none absolute inset-0 z-10 hidden lg:block"
+        style={{
+          transform: `translate(${mouse.x * 0.06}px, ${mouse.y * 0.06}px)`,
+          transition: "transform 0.3s ease-out",
+        }}
+      >
+        <div className="absolute right-[6%] top-[10%]">
+          <img
+            src={avatarImg}
+            alt=""
+            aria-hidden="true"
+            className="
+              relative
+              h-[150px] w-auto
+              select-none object-contain
+              opacity-60
+              xl:h-[180px]
+              dark:opacity-40
+            "
+            style={{
+              filter: isDark
+                ? "drop-shadow(0 10px 20px rgba(0,0,0,0.18))"
+                : "drop-shadow(0 8px 16px rgba(200,144,46,0.10))",
+            }}
+          />
+        </div>
+      </div>
 
       {/* Contenido central */}
       <div
@@ -252,7 +263,7 @@ export default function SolarHero() {
               <span className="relative inline-block text-primary">
                 <span style={{ fontVariantLigatures: "none" }}>ı</span>
                 <span
-                  className="absolute left-1/2 -translate-x-1/2 animate-pulse"
+                  className="absolute left-1/2 animate-pulse -translate-x-1/2"
                   style={{
                     width: "0.22em",
                     height: "0.22em",
@@ -290,7 +301,7 @@ export default function SolarHero() {
         >
           {[
             {
-              href: emailSocial?.href ? `mailto:${emailSocial.href}` : "#",
+              href: emailSocial?.href ?? "#",
               icon: <Mail className="h-4 w-4" />,
               label: "Email",
             },
