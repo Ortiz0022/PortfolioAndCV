@@ -30,8 +30,14 @@ export const profile: Profile = {
       id: "linkedin",
       platform: "linkedin",
       label: "LinkedIn",
-      href: "https://www.linkedin.com/in/angelica-ortiz-barrantes/",
+      href: "https://www.linkedin.com/in/angelicaortizbarrantes/",
     },
+    {
+      id: "cv",
+      platform: "other",
+      label: "CV",
+      href: "/public/documents/cv_angelica_ortiz.pdf",
+    }
   ],
   professional: [
     "Trabajo colaborativo (Scrum)",

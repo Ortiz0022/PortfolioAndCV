@@ -40,10 +40,10 @@ export const projects: Project[] = [
   },
   {
     id: "p-university",
-    title: "University Management System",
+    title: "Sistema de Gestión Universitaria",
     shortDescription:
-      "Sistema web para gestionar información y procesos administrativos municipales.",
-    technologies: ["React", "TypeScript", ".NET", "SQL Server"],
+      "Sistema web para gestionar información, matrículas, procesos administrativos y académicos universitarios.",
+    technologies: ["React", "TypeScript", ".NET", "SQL Server", "ETL", "Data Mart"],
     media: [
       {
         kind: "image",

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Github, Linkedin, Mail } from "lucide-react";
+import {  FileText, Github, Linkedin, Mail } from "lucide-react";
 import avatarImg from "/images/avatar-chibi.png";
 import { profile } from "@/modules/cv/data/profile";
 import { useTheme } from "@/shared/providers/ThemeProvider";
@@ -78,6 +78,7 @@ export default function SolarHero() {
   const emailSocial = profile.socials.find((s) => s.platform === "email");
   const githubSocial = profile.socials.find((s) => s.platform === "github");
   const linkedinSocial = profile.socials.find((s) => s.platform === "linkedin");
+  const cvSocial = profile.socials.find((s) => s.platform === "other");
 
   return (
     <section
@@ -203,6 +204,11 @@ export default function SolarHero() {
               icon: <Linkedin className="h-4 w-4" />,
               label: "LinkedIn",
             },
+            {
+              href: cvSocial?.href ?? "#",
+              icon: <FileText className="h-4 w-4" />,
+              label: "CV",
+            }
           ].map((social) => (
             <a
               key={social.label}
