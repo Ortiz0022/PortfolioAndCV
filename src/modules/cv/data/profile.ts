@@ -36,7 +36,7 @@ export const profile: Profile = {
       id: "cv",
       platform: "other",
       label: "CV",
-      href: "/public/documents/cv_angelica_ortiz.pdf",
+      href: "https://drive.google.com/file/d/1moe6UVvvBbEfEX8mDhZHnImI3-1ztnNp/view?usp=sharing",
     }
   ],
   professional: [
