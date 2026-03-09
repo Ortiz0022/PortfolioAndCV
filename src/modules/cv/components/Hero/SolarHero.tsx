@@ -50,8 +50,18 @@ function HeroPlanetButton({
 export default function SolarHero() {
   const { theme } = useTheme();
   const isDark = theme === "dark";
-
+  const [isMobile, setIsMobile] = useState(false);
   const [mouse, setMouse] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -210,50 +220,52 @@ export default function SolarHero() {
 
       {/* Planetas reales por encima del contenido */}
       <div
-        className="absolute inset-0 z-10"
-        style={{
-          transform: `translate(${mouse.x * 0.1}px, ${mouse.y * 0.1}px)`,
-          transition: "transform 0.35s ease-out",
-        }}
-      >
-        {HERO_PLANETS.map((planet, index) => {
-          const palette = isDark
-            ? {
-                gradient: planet.palette.gradientDark,
-                glow: planet.palette.glowDark,
-                border: planet.palette.borderDark,
-                text: planet.palette.textDark,
-              }
-            : {
-                gradient: planet.palette.gradientLight,
-                glow: planet.palette.glowLight,
-                border: planet.palette.borderLight,
-                text: planet.palette.textLight,
-              };
+      className="pointer-events-none absolute inset-0 z-10"
+      style={{
+        transform: `translate(${mouse.x * 0.1}px, ${mouse.y * 0.1}px)`,
+        transition: "transform 0.35s ease-out",
+      }}
+    >
+      {HERO_PLANETS.map((planet, index) => {
+        const palette = isDark
+          ? {
+              gradient: planet.palette.gradientDark,
+              glow: planet.palette.glowDark,
+              border: planet.palette.borderDark,
+              text: planet.palette.textDark,
+            }
+          : {
+              gradient: planet.palette.gradientLight,
+              glow: planet.palette.glowLight,
+              border: planet.palette.borderLight,
+              text: planet.palette.textLight,
+            };
 
-          return (
-            <div
-              key={planet.label}
-              className="absolute"
-              style={{
-                left: `calc(50% + ${planet.pos.x}vw)`,
-                top: `calc(50% + ${planet.pos.y}vh)`,
-                transform: "translate(-50%, -50%)",
-              }}
-            >
-              <HeroPlanetButton
-                label={planet.label}
-                href={planet.href}
-                gradient={palette.gradient}
-                glow={palette.glow}
-                border={palette.border}
-                textColor={palette.text}
-                delay={`${(index * 0.3).toFixed(2)}s`}
-              />
-            </div>
-          );
-        })}
-      </div>
+        const currentPos = isMobile ? planet.mobilePos : planet.pos;
+
+        return (
+          <div
+            key={planet.label}
+            className="absolute pointer-events-auto"
+            style={{
+              left: `calc(50% + ${currentPos?.x}vw)`,
+              top: `calc(50% + ${currentPos?.y}vh)`,
+              transform: "translate(-50%, -50%)",
+            }}
+          >
+            <HeroPlanetButton
+              label={planet.label}
+              href={planet.href}
+              gradient={palette.gradient}
+              glow={palette.glow}
+              border={palette.border}
+              textColor={palette.text}
+              delay={`${(index * 0.3).toFixed(2)}s`}
+            />
+          </div>
+        );
+      })}
+    </div>
     </section>
   );
 }

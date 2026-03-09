@@ -14,5 +14,6 @@ export type HeroPlanet = {
   label: string;
   href: string;
   pos: { x: number; y: number };
+  mobilePos?: { x: number; y: number };
   palette: PlanetPalette;
 };
