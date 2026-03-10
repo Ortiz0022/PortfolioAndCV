@@ -1,5 +1,4 @@
 import { useForm } from "@tanstack/react-form";
-import { z } from "zod";
 import SectionLayout from "../../../../shared/components/layout/SectionLayout";
 import {
   Send,
@@ -15,68 +14,9 @@ import {
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { profile } from "../../data/profile";
-
-function StarDeco({
-  size = 10,
-  className = "",
-  color,
-}: {
-  size?: number;
-  className?: string;
-  color?: string;
-}) {
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 16 16"
-      fill={color ?? "currentColor"}
-      className={className}
-    >
-      <path d="M8 0 L8.8 7.2 L16 8 L8.8 8.8 L8 16 L7.2 8.8 L0 8 L7.2 7.2 Z" />
-    </svg>
-  );
-}
-
-function Star6({
-  size = 10,
-  color,
-  className,
-}: {
-  size?: number;
-  color?: string;
-  className?: string;
-}) {
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill={color ?? "currentColor"}
-      className={className}
-    >
-      <path d="M12 2 L13.5 9 L20 7 L15 12 L20 17 L13.5 15 L12 22 L10.5 15 L4 17 L9 12 L4 7 L10.5 9 Z" />
-    </svg>
-  );
-}
-
-const nameSchema = z
-  .string()
-  .min(2, "Mínimo 2 caracteres.")
-  .max(60, "Demasiado largo.");
-const emailSchema = z
-  .string()
-  .min(1, "El correo es obligatorio.")
-  .email("Correo inválido.");
-const messageSchema = z
-  .string()
-  .min(10, "Mínimo 10 caracteres.")
-  .max(1000, "Máximo 1000 caracteres.");
-
-function validate<T>(schema: z.ZodType<T>, value: T): string | undefined {
-  const r = schema.safeParse(value);
-  if (!r.success) return r.error.issues[0].message;
-}
+import emailjs from "@emailjs/browser";
+import { nameSchema, emailSchema, messageSchema, validate } from "../../schemas/formSchema";
+import { Star6, StarDeco } from "./StarDeco";
 
 function FieldError({ message }: { message?: string }) {
   if (!message) return null;
@@ -177,14 +117,31 @@ const SOCIAL_META = [
 export default function ContactSection() {
   const [submitted, setSubmitted] = useState(false);
 
-  const form = useForm({
-    defaultValues: { name: "", email: "", message: "" },
-    onSubmit: async ({ value }) => {
-      await new Promise((r) => setTimeout(r, 900));
-      console.log("Enviado:", value);
+ const form = useForm({
+  defaultValues: { name: "", email: "", message: "" },
+  onSubmit: async ({ value }) => {
+    try {
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        {
+          name: value.name,
+          email: value.email,
+          message: value.message,
+        },
+        {
+          publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+        }
+      );
+
       setSubmitted(true);
-    },
-  });
+      form.reset();
+    } catch (error) {
+      console.error("Error enviando correo:", error);
+      alert("No se pudo enviar el mensaje. Intenta de nuevo.");
+    }
+  },
+});
 
   /**
    * Cruza la metadata visual con los links reales del perfil.
@@ -192,8 +149,7 @@ export default function ContactSection() {
   const socials = SOCIAL_META.flatMap((meta) => {
     const link = profile.socials?.find((s) => s.platform === meta.platform);
     if (!link) return [];
-    const href = meta.platform === "email" ? `mailto:${link.href}` : link.href;
-    return [{ ...meta, href, display: link.label ?? link.href }];
+    return [{ ...meta, href: link.href, display: link.label ?? link.href }];
   });
 
   return (

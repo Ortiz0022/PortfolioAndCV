@@ -24,7 +24,7 @@ export const profile: Profile = {
       id: "email",
       platform: "email",
       label: "Email",
-      href: "mailto:ortiz.barrantes.angelica@gmail.com",
+      href: "https://mail.google.com/mail/?view=cm&to=ortiz.barrantes.angelica@gmail.com&su=Contacto%20desde%20tu%20portafolio"
     },
     {
       id: "linkedin",
